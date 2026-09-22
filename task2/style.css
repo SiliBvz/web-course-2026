@@ -1,0 +1,554 @@
+/* ==========================================================================
+   1. СБРОС И БАЗОВЫЕ НАСТРОЙКИ (Mobile First)
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-bg: #fcfdfa;
+    --color-text: #1a1a1a;
+    --color-text-muted: #666666;
+    --color-primary: #3b4d28;      /* Темно-зеленый из макета */
+    --color-primary-hover: #2a371c;
+    --color-accent: #e2ebc7;       /* Светло-зеленый из макета */
+    --color-accent-hover: #d3e0b0;
+    --color-border: #e5e5e5;
+    
+    --font-heading: 'Georgia', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================================================
+   2. ТИПОГРАФИКА И КНОПКИ (Flexbox компоненты + Touch Target >= 44px)
+   ========================================================================== */
+.logo {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    color: var(--color-text-muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+.badge {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Кнопки удовлетворяют тач-зоне не менее 44px по высоте */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 24px;
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+}
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.btn--primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn--secondary {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+}
+
+.btn--secondary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. МОБИЛЬНАЯ ВЁРСТКА (< 768px) — Mobile First
+   ========================================================================== */
+
+/* Header */
+.header {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav, .header__btn {
+    display: none; /* Скрываем меню и кнопку на мобильных */
+}
+
+/* Визуальный гамбургер (требование №4) */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 44px;
+    height: 44px;
+    padding: 12px 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger__line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero {
+    padding: 40px 16px;
+    text-align: center;
+}
+
+.hero__title {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: normal;
+    margin-bottom: 24px;
+}
+
+.hero__image-wrapper {
+    background-color: var(--color-accent);
+    padding: 20px;
+    border-radius: 24px;
+}
+
+.hero__image {
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Trusted Logos */
+.trusted {
+    padding: 30px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.trusted__title {
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+.trusted__logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text-muted);
+    font-weight: bold;
+}
+
+/* Benefits (Используем CSS Grid) */
+.benefits {
+    padding: 40px 16px;
+}
+
+.benefits__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.card {
+    padding: 16px 0;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card__icon {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.card__title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.card__text {
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+/* Banner Image */
+.banner {
+    padding: 20px 16px;
+}
+
+.banner__img {
+    border-radius: 24px;
+    width: 100%;
+}
+
+/* Feature Section (Grid) */
+.feature {
+    padding: 40px 16px;
+}
+
+.feature__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+.feature__list {
+    margin: 24px 0;
+    padding-left: 20px;
+}
+
+.feature__list li {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.feature__img {
+    border-radius: 24px;
+    width: 100%;
+}
+
+/* Testimonial (Grid) */
+.testimonial {
+    padding: 40px 16px;
+}
+
+.testimonial__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.testimonial__img {
+    border-radius: 24px;
+    width: 100%;
+}
+
+.testimonial__quote {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial__author {
+    font-style: normal;
+    font-family: var(--font-body);
+    font-size: 14px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Steps Section (Grid) */
+.steps {
+    padding: 40px 16px;
+}
+
+.steps__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.steps__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.step-card__num {
+    font-size: 36px;
+    color: #cccccc;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.step-card__title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.step-card__text {
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+/* Contact Form (Требование №5: Поля с :hover и :focus) */
+.contact {
+    padding: 60px 16px;
+}
+
+.contact__wrapper {
+    background-color: #f4f6f0;
+    padding: 32px 20px;
+    border-radius: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    min-height: 44px; /* Touch-friendly */
+    padding: 10px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: #ffffff;
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-textarea {
+    resize: vertical;
+    padding-top: 12px;
+}
+
+/* Состояния Hover и Focus */
+.form-input:hover {
+    border-color: #a0a0a0;
+}
+
+.form-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 77, 40, 0.15);
+}
+
+.form-btn {
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* Footer (Flexbox) */
+.footer {
+    padding: 40px 16px;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer__links {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.footer__copy {
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+
+/* ==========================================================================
+   4. ПЛАНШЕТ (768px – 1199px) — Медиазапрос min-width: 768px
+   ========================================================================== */
+@media (min-width: 768px) {
+    .container {
+        max-width: 740px;
+    }
+
+    /* Навигация становится видимой, гамбургер скрываем */
+    .hamburger {
+        display: none;
+    }
+
+    .nav, .header__btn {
+        display: flex;
+    }
+
+    .nav__list {
+        display: flex;
+        gap: 24px;
+    }
+
+    .nav__link {
+        font-size: 14px;
+        transition: var(--transition);
+    }
+
+    .nav__link:hover {
+        color: var(--color-primary);
+    }
+
+    .hero__title {
+        font-size: 64px;
+    }
+
+    .hero__image-wrapper {
+        padding: 40px;
+    }
+
+    /* Benefits: 2 колонки в Grid */
+    .benefits__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    /* Feature: 2 колонки */
+    .feature__grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    /* Testimonial: 2 колонки */
+    .testimonial__grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    /* Steps Header & Grid */
+    .steps__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .steps__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer__container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+/* ==========================================================================
+   5. ДЕСКТОП (от 1200px) — Медиазапрос min-width: 1200px
+   ========================================================================== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero__title {
+        font-size: 80px;
+    }
+
+    .hero__image-wrapper {
+        padding: 60px;
+        border-radius: 32px;
+    }
+
+    .section-title {
+        font-size: 44px;
+    }
+
+    /* Benefits: 4 колонки в ряд */
+    .benefits__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .trusted {
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .contact__wrapper {
+        padding: 48px;
+    }
+}
