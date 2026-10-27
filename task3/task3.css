@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.delete-btn {
+  margin-left: auto;
+  color: red;
+  cursor: pointer;
+}
+
+#warning {
+  color: red;
+}
+
+#filters {
+  margin: 10px 0;
+}
+
+.filter-btn {
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  font-weight: bold;
+}
