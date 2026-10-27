@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Быки и коровы</title>
+
+  <link rel="stylesheet" href="task4.css">
+  <script src="task4.js" defer></script>
+</head>
+<body>
+
+  <h1>Игра «Быки и коровы»</h1>
+
+  <p>Угадайте число из 4 разных цифр</p>
+
+  <form id="game-form">
+    <input id="guess-input" type="text" maxlength="4" placeholder="Введите 4 цифры">
+    <button type="submit">Проверить</button>
+  </form>
+
+  <p id="message"></p>
+
+  <p id="counter">Попыток: 0</p>
+
+  <button id="new-game">Новая игра</button>
+
+  <h2>История попыток</h2>
+  <ul id="history"></ul>
+
+</body>
+</html>
